@@ -1,0 +1,19 @@
+﻿/databases/mini_projet/folder.kpi_helpers/kpi_helpers.vql
+/databases/mini_projet/folder.integration/integration.vql
+/databases/mini_projet/folder.base views/base views.vql
+/databases/mini_projet/folder.data sources/data sources.vql
+/databases/mini_projet/folder.data sources/datasources/jdbc/ds_full_employes.vql
+/databases/mini_projet/folder.base views/views/bv_enterprise.vql
+/databases/mini_projet/folder.data sources/datasources/df/ds_employe_csv.vql
+/databases/mini_projet/folder.base views/views/bv_employe_csv.vql
+/databases/mini_projet/folder.data sources/datasources/custom/ds_motif_sort.vql
+/databases/mini_projet/folder.base views/views/bv_motif_sort.vql
+/databases/mini_projet/folder.data sources/datasources/custom/ds_etablissement.vql
+/databases/mini_projet/folder.base views/views/bv_etablissement.vql
+/databases/mini_projet/folder.data sources/datasources/custom/ds_pays.vql
+/databases/mini_projet/folder.base views/views/bv_pays.vql
+/databases/mini_projet/folder.integration/views/iv_full_employees_info.vql
+/databases/mini_projet/folder.data sources/datasources/custom/ds_data_helper.vql
+/databases/mini_projet/folder.base views/views/bv_data_helper.vql
+/databases/mini_projet/folder.integration/views/iv_full_employees.vql
+/databases/mini_projet/folder.integration/views/iv_full_employees_age_cat.vql

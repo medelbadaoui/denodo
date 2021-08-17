@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_full_part_time FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, 'full_part_time' AS kpi_key, job_type AS job_type, count(*) AS contracts_number FROM iv_full_employees_age_cat GROUP BY month, nom_payé, job_type;
+
+ALTER VIEW kpi_full_part_time
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

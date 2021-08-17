@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC ds_full_employes
+    FOLDER = '/data sources'
+    DRIVERCLASSNAME = 'oracle.jdbc.OracleDriver'
+    DATABASEURI = '${databases.mini_projet.folder.data sources.datasources.jdbc.ds_full_employes.DATABASEURI}'
+    USERNAME = '${databases.mini_projet.folder.data sources.datasources.jdbc.ds_full_employes.USERNAME}'
+    USERPASSWORD = '${databases.mini_projet.folder.data sources.datasources.jdbc.ds_full_employes.USERPASSWORD}' ${databases.mini_projet.folder.data sources.datasources.jdbc.ds_full_employes.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'oracle-18c'
+    DATABASENAME = 'oracle'
+    DATABASEVERSION = '18c'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'SELECT COUNT(*) FROM SYS.DUAL'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    PROPERTIES ('remarksReporting'='false', 'includeSynonyms'='false')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    );
+

@@ -1,0 +1,3 @@
+﻿/databases/mini_projet/folder.base views/base views.vql
+/databases/mini_projet/folder.data sources/data sources.vql
+/databases/mini_projet/folder.data sources/datasources/custom/ds_etablissement.vql

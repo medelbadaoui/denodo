@@ -1,0 +1,18 @@
+﻿CREATE OR REPLACE TABLE bv_data_helper I18N fr_euro (
+        fulldate:localdate (sourcetypeid = '91', sourcetypedecimals = '0'),
+        month:text (sourcetypeid = '12')
+    )
+    FOLDER = '/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_data_helper(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD fulldate (any) OPT ANY
+             ADD month (any) OPT ANY
+        )
+        OUTPUTLIST (fulldate, month
+        )
+        WRAPPER (custom ds_data_helper)
+    );
+

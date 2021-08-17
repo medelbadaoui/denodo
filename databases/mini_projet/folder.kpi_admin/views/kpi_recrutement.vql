@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_recrutement FOLDER = '/kpi_admin' AS SELECT iv_full_employees_age_cat.month AS month, iv_full_employees_age_cat.nom_payé AS nom_payé, 'recrutement' AS kpi_key, count(*) AS contracts_number FROM iv_full_employees_age_cat WHERE (type_contrat = 'CDI' AND new_member = true) GROUP BY iv_full_employees_age_cat.month, iv_full_employees_age_cat.nom_payé;
+
+ALTER VIEW kpi_recrutement
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

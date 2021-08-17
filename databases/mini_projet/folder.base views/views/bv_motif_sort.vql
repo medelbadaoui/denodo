@@ -1,0 +1,18 @@
+﻿CREATE OR REPLACE TABLE bv_motif_sort I18N fr_euro (
+        code_motif_sort:int (sourcetypeid = '4'),
+        desc_motif_sort:text (sourcetypeid = '12')
+    )
+    FOLDER = '/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_motif_sort(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD code_motif_sort (any) OPT ANY
+             ADD desc_motif_sort (any) OPT ANY
+        )
+        OUTPUTLIST (code_motif_sort, desc_motif_sort
+        )
+        WRAPPER (custom ds_motif_sort)
+    );
+

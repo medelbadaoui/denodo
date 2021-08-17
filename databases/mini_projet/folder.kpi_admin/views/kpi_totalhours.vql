@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_totalhours FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, 'contractual_hours' AS kpi_key, sum(sal_hmens) AS total_hours FROM iv_full_employees_age_cat GROUP BY month, nom_payé;
+
+ALTER VIEW kpi_totalhours
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_entrance_rate FOLDER = '/kpi_admin' AS SELECT kpi_fixed_permanent_helper.month AS month, kpi_fixed_permanent_helper.nom_payé AS nom_payé, 'entrance_rate' AS kpi_key, case WHEN (kpi_recrutement_.contracts_number is null ) THEN 0 ELSE kpi_recrutement_.contracts_number END AS recrutement, kpi_fixed_permanent_helper.contracts_number AS permanent, case WHEN (kpi_recrutement_.contracts_number is null ) THEN 0.0 ELSE (cast('double', kpi_recrutement_.contracts_number)/cast('double', kpi_fixed_permanent_helper.contracts_number)) END AS entrance_rate FROM kpi_recrutement AS kpi_recrutement_ RIGHT OUTER JOIN kpi_permanent_helper AS kpi_fixed_permanent_helper ON (kpi_recrutement_.month = kpi_fixed_permanent_helper.month AND kpi_recrutement_.nom_payé = kpi_fixed_permanent_helper.nom_payé) ;
+
+ALTER VIEW kpi_entrance_rate
+ LAYOUT (kpi_recrutement = [150, 190, 200, 105], kpi_permanent_helper = [740, 190, 200, 125]);
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_avg_seniority FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, 'seniority_average' AS kpi_key, avg(sal_danc) AS avg_seniority FROM iv_full_employees_age_cat GROUP BY month, nom_payé;
+
+ALTER VIEW kpi_avg_seniority
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

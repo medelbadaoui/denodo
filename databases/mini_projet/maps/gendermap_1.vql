@@ -1,0 +1,7 @@
+﻿CREATE OR REPLACE MAP simple "GenderMap_1" (
+    'Femme' = 'F'
+    'Homme' = 'M'
+    '^mal' = 'M'
+    'female' = 'F'
+);
+

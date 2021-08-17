@@ -1,0 +1,59 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_enterprise
+    FOLDER = '/base views'
+    DATASOURCENAME=ds_full_employes
+    SCHEMANAME='${databases.mini_projet.folder.base views.views.jdbc.bv_enterprise.SCHEMANAME}' 
+    RELATIONNAME='ENTERPRISE' 
+    OUTPUTSCHEMA (
+        sal_mat_paie = 'SAL_MAT_PAIE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_empli = 'SAL_EMPLI' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        date_ent = 'DATE_ENT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        date_fin = 'DATE_FIN' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_motifsot = 'SAL_MOTIFSOT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_motif_ent = 'SAL_MOTIF_ENT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        type_contrat = 'TYPE_CONTRAT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_danc = 'SAL_DANC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_catsoc = 'SAL_CATSOC' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_hmens = 'SAL_HMENS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sal_qualif_referentiel = 'SAL_QUALIF_REFERENTIEL' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        num_rtablissement = 'NUM_RTABLISSEMENT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_enterprise I18N fr_euro (
+        sal_mat_paie:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_empli:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'),
+        date_ent:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        date_fin:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        sal_motifsot:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_motif_ent:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'),
+        type_contrat:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_danc:long (sourcetypeid = '2', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_catsoc:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_hmens:long (sourcetypeid = '4', sourcetyperadix = '10', sourcetypesize = '20'),
+        sal_qualif_referentiel:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        num_rtablissement:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypesize = '20')
+    )
+    FOLDER = '/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_enterprise(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD sal_mat_paie (any) OPT ANY
+             ADD sal_empli (any) OPT ANY
+             ADD date_ent (any) OPT ANY
+             ADD date_fin (any) OPT ANY
+             ADD sal_motifsot (any) OPT ANY
+             ADD sal_motif_ent (any) OPT ANY
+             ADD type_contrat (any) OPT ANY
+             ADD sal_danc (any) OPT ANY
+             ADD sal_catsoc (any) OPT ANY
+             ADD sal_hmens (any) OPT ANY
+             ADD sal_qualif_referentiel (any) OPT ANY
+             ADD num_rtablissement (any) OPT ANY
+        )
+        OUTPUTLIST (date_ent, date_fin, num_rtablissement, sal_catsoc, sal_danc, sal_empli, sal_hmens, sal_mat_paie, sal_motif_ent, sal_motifsot, sal_qualif_referentiel, type_contrat
+        )
+        WRAPPER (jdbc bv_enterprise)
+    );
+

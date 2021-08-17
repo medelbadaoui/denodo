@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_lm_fixed_permanent FOLDER = '/kpi_lastmonth' AS SELECT iv_full_employees_info.nom_payé AS nom_payé, 'contract_type' AS kpi_key, iv_full_employees_info.type_contrat AS type_contrat, count(*) AS contracts_number FROM iv_full_employees_info WHERE (date_ent <= lastdayofmonth(addmonth(current_date(), -1)) AND date_fin >= firstdayofmonth(addmonth(current_date(), -1))) GROUP BY iv_full_employees_info.nom_payé, iv_full_employees_info.type_contrat;
+
+ALTER VIEW kpi_lm_fixed_permanent
+ LAYOUT (iv_full_employees_info = [20, 20, 234, 465]);
+

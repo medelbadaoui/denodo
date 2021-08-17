@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_cadre_noncadre FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, sal_catsoc AS sal_catsoc, 'cadre_noncadre' AS kpi_key, count(*) AS contracts_number FROM iv_full_employees_age_cat GROUP BY month, nom_payé, sal_catsoc;
+
+ALTER VIEW kpi_cadre_noncadre
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

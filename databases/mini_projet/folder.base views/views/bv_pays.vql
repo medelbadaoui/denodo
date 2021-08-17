@@ -1,0 +1,18 @@
+﻿CREATE OR REPLACE TABLE bv_pays I18N fr_euro (
+        id_paye:int (sourcetypeid = '4'),
+        nom_payé:text (sourcetypeid = '12')
+    )
+    FOLDER = '/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_pays(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD id_paye (any) OPT ANY
+             ADD nom_payé (any) OPT ANY
+        )
+        OUTPUTLIST (id_paye, nom_payé
+        )
+        WRAPPER (custom ds_pays)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_lm_age FOLDER = '/kpi_lastmonth' AS SELECT iv_full_emplyees_info_age_cat.nom_payé AS nom_payé, 'age' AS kpi_key, iv_full_emplyees_info_age_cat.age_cat_lm AS age_cat_lm, count(*) AS contracts_number FROM iv_full_emplyees_info_age_cat WHERE (date_ent <= lastdayofmonth(addmonth(current_date(), -1)) AND date_fin >= firstdayofmonth(addmonth(current_date(), -1))) GROUP BY iv_full_emplyees_info_age_cat.nom_payé, iv_full_emplyees_info_age_cat.age_cat_lm;
+
+ALTER VIEW kpi_lm_age
+ LAYOUT (iv_full_emplyees_info_age_cat = [20, 20, 237, 525]);
+

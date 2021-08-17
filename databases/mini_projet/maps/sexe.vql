@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE MAP simple "Sexe" (
+    'Femme' = 'female'
+    'Homme' = 'mal'
+);
+

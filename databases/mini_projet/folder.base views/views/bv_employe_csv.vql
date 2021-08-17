@@ -1,0 +1,41 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_employe_csv
+    FOLDER = '/base views'
+    DATASOURCENAME=ds_employe_csv
+    OUTPUTSCHEMA (
+        sal_empl = 'SAL_EMPL' (OPT),
+        full_name = 'FULL_NAME' (OPT),
+        date_nais = 'DATE_NAIS' (OPT),
+        ind_sexe = 'IND_SEXE' (OPT),
+        mail = 'MAIL' (OPT),
+        nb_enf = 'NB_ENF' (OPT),
+        age = 'AGE' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_employe_csv I18N fr_euro (
+        sal_empl:text,
+        full_name:text,
+        date_nais:text,
+        ind_sexe:text,
+        mail:text,
+        nb_enf:text,
+        age:text
+    )
+    FOLDER = '/base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_employe_csv(
+        I18N fr_euro
+        CONSTRAINTS (
+             ADD sal_empl (any) OPT ANY
+             ADD full_name (any) OPT ANY
+             ADD date_nais (any) OPT ANY
+             ADD ind_sexe (any) OPT ANY
+             ADD mail (any) OPT ANY
+             ADD nb_enf (any) OPT ANY
+             ADD age (any) OPT ANY
+        )
+        OUTPUTLIST (age, date_nais, full_name, ind_sexe, mail, nb_enf, sal_empl
+        )
+        WRAPPER (df ds_employe_csv)
+    );
+

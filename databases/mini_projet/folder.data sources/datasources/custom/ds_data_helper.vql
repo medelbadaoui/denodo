@@ -1,0 +1,21 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_data_helper
+    FOLDER = '/data sources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_data_helper
+    FOLDER = '/base views'
+    DATASOURCENAME=ds_data_helper
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.mini_projet.folder.base views.views.custom.ds_data_helper.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        fulldate = 'Full Date' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        month = 'Month' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

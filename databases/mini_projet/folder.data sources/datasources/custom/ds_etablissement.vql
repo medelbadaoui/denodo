@@ -1,0 +1,23 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_etablissement
+    FOLDER = '/data sources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_etablissement
+    FOLDER = '/data sources'
+    DATASOURCENAME=ds_etablissement
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.mini_projet.folder.data sources.views.custom.ds_etablissement.File location.ROUTE.LOCAL.PATH}',
+      'Worksheet' = 'etablissement',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        code_etabl = 'code_etabl' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        nom_etabl = 'nom_etabl' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        code_paye = 'code_paye' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+    );
+

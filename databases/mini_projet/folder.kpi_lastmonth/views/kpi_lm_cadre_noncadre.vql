@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_lm_cadre_noncadre FOLDER = '/kpi_lastmonth' AS SELECT iv_full_employees_info.nom_payé AS nom_payé, 'cadre_noncadre' AS kpi_key, iv_full_employees_info.sal_catsoc AS sal_catsoc, count(*) AS contracts_number FROM iv_full_employees_info WHERE (date_ent <= lastdayofmonth(addmonth(current_date(), -1)) AND date_fin >= firstdayofmonth(addmonth(current_date(), -1))) GROUP BY iv_full_employees_info.nom_payé, iv_full_employees_info.sal_catsoc;
+
+ALTER VIEW kpi_lm_cadre_noncadre
+ LAYOUT (iv_full_employees_info = [20, 20, 234, 465]);
+

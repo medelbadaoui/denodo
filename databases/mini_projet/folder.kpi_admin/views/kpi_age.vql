@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_age FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, 'age' AS kpi_key, age_cat AS age_cat, count(*) AS contracts_number FROM iv_full_employees_age_cat GROUP BY month, nom_payé, age_cat;
+
+ALTER VIEW kpi_age
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

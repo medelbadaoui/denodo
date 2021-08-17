@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_permanent_helper FOLDER = '/kpi_helpers' AS SELECT formatdate('MM/yyyy', addmonth(to_localdate('MM/yyyy', iv_full_employees_age_cat.month), 1)) AS month, iv_full_employees_age_cat.nom_payé AS nom_payé, iv_full_employees_age_cat.type_contrat AS type_contrat, 'fixed_permanent' AS kpi_key, count(*) AS contracts_number FROM iv_full_employees_age_cat WHERE type_contrat = 'CDI' GROUP BY iv_full_employees_age_cat.month, iv_full_employees_age_cat.nom_payé, iv_full_employees_age_cat.type_contrat;
+
+ALTER VIEW kpi_permanent_helper
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

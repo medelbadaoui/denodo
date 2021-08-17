@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE mini_projet '';
+
+ALTER DATABASE mini_projet
+  CHARSET DEFAULT;
+

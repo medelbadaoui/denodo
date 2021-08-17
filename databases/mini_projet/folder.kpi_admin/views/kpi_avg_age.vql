@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW kpi_avg_age FOLDER = '/kpi_admin' AS SELECT month AS month, nom_payé AS nom_payé, 'age_average' AS kpi_key, avg(age_in_period) AS avg_age FROM iv_full_employees_age_cat GROUP BY month, nom_payé;
+
+ALTER VIEW kpi_avg_age
+ LAYOUT (iv_full_employees_age_cat = [20, 20, 234, 605]);
+

@@ -1,0 +1,22 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_motif_sort
+    FOLDER = '/data sources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_motif_sort
+    FOLDER = '/base views'
+    DATASOURCENAME=ds_motif_sort
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.mini_projet.folder.base views.views.custom.ds_motif_sort.File location.ROUTE.LOCAL.PATH}',
+      'Worksheet' = 'motif_sort',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        code_motif_sort = 'code_motif_sort' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        desc_motif_sort = 'desc_motif_sort' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+
